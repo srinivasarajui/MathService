@@ -1,0 +1,165 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a simple Math Ops API"
+  version: "1.0.0"
+  title: "Simple Math Ops API"
+  contact:
+    email: "srinivasarajui@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+- name: "Math"
+  description: "Mathematical Operations"
+paths:
+  /max:
+    post:
+      tags:
+      - "Math"
+      summary: "Maximum Values of the input values"
+      description: "Maximum Values of the input values\n"
+      operationId: "max"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "data"
+        description: "pass nummtiple numbers"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "number"
+      responses:
+        200:
+          description: "max value"
+          schema:
+            type: "number"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Math"
+  /min:
+    post:
+      tags:
+      - "Math"
+      summary: "Min Values of the input values"
+      description: "Min Values of the input values\n"
+      operationId: "min"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "data"
+        description: "pass nummtiple numbers"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "number"
+      responses:
+        200:
+          description: "min value"
+          schema:
+            type: "number"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Math"
+  /sum:
+    post:
+      tags:
+      - "Math"
+      summary: "Add all Values of the input values"
+      description: "Add all Values of the input values\n"
+      operationId: "sumid"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "data"
+        description: "pass nummtiple numbers"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "number"
+      responses:
+        200:
+          description: "total  value"
+          schema:
+            type: "number"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Math"
+  /pi:
+    get:
+      tags:
+      - "Math"
+      summary: "get the pi value"
+      description: "get the pi value\n"
+      operationId: "pi"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "pi  value"
+          schema:
+            type: "number"
+      x-swagger-router-controller: "Math"
+  /power:
+    post:
+      tags:
+      - "Math"
+      summary: "Exponsnet is calculated"
+      description: "Calucalted exponent\n"
+      operationId: "power"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "data"
+        description: "Enter the values of the object"
+        required: true
+        schema:
+          $ref: "#/definitions/powInput"
+      responses:
+        200:
+          description: "exp  value"
+          schema:
+            type: "number"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Math"
+  /sqrt/{input}:
+    post:
+      tags:
+      - "Math"
+      summary: "Square root is calculated"
+      description: "Calucalted exponent\n"
+      operationId: "squrt"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "input"
+        in: "path"
+        description: "Enter the values of the object"
+        required: true
+        type: "number"
+      responses:
+        200:
+          description: "output  value"
+          schema:
+            type: "number"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Math"
+definitions:
+  powInput:
+    type: "object"
+    properties:
+      base:
+        type: "number"
+      power:
+        type: "integer"
+        format: "int64"
